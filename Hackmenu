@@ -1,0 +1,226 @@
+(function() {
+    // Create the dropdown button
+    var dropdownButton = document.createElement('button');
+    dropdownButton.id = 'dropdownButton';
+    dropdownButton.innerText = 'Open Menu';
+    dropdownButton.style.position = 'absolute';
+    dropdownButton.style.top = '10px';
+    dropdownButton.style.left = '10px';
+    dropdownButton.style.padding = '10px';
+    dropdownButton.style.backgroundColor = '#333';
+    dropdownButton.style.color = 'white';
+    dropdownButton.style.border = 'none';
+    dropdownButton.style.cursor = 'pointer';
+    document.body.appendChild(dropdownButton);
+
+    // Create the menu overlay
+    var menuOverlay = document.createElement('div');
+    menuOverlay.id = 'menuOverlay';
+    menuOverlay.style.display = 'none';
+    menuOverlay.style.position = 'fixed';
+    menuOverlay.style.top = '0';
+    menuOverlay.style.left = '0';
+    menuOverlay.style.width = '100%';
+    menuOverlay.style.height = '100%';
+    menuOverlay.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    menuOverlay.style.zIndex = '1000';
+    menuOverlay.style.padding = '20px';
+    menuOverlay.style.boxSizing = 'border-box';
+    menuOverlay.style.overflowY = 'auto'; // Enable vertical scrolling
+    document.body.appendChild(menuOverlay);
+
+    // Create the back arrow
+    var backButton = document.createElement('button');
+    backButton.innerText = '←';
+    backButton.style.position = 'absolute';
+    backButton.style.top = '10px';
+    backButton.style.left = '10px';
+    backButton.style.padding = '10px';
+    backButton.style.backgroundColor = '#333';
+    backButton.style.color = 'white';
+    backButton.style.border = 'none';
+    backButton.style.cursor = 'pointer';
+    backButton.style.display = 'none';
+    backButton.onclick = function() {
+        menuOverlay.style.display = 'none';
+        dropdownButton.style.display = 'block';
+    };
+    menuOverlay.appendChild(backButton);
+
+    // Create the close (X) button
+    var closeButton = document.createElement('button');
+    closeButton.innerText = 'X';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '10px';
+    closeButton.style.right = '10px';
+    closeButton.style.padding = '10px';
+    closeButton.style.backgroundColor = '#333';
+    closeButton.style.color = 'white';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+    closeButton.onclick = function() {
+        menuOverlay.remove();
+        dropdownButton.remove();
+    };
+    menuOverlay.appendChild(closeButton);
+
+    // Create the main header
+    var mainHeader = document.createElement('h1');
+    mainHeader.innerText = 'CrackinPMG Hack Menu V1 Alpha';
+    mainHeader.style.textAlign = 'center';
+    mainHeader.style.color = '#333';
+    mainHeader.style.fontSize = '42px'; // Slightly larger font size
+    mainHeader.style.marginTop = '50px';
+    menuOverlay.appendChild(mainHeader);
+
+    // Function to create headers
+    function createHeader(text) {
+        var header = document.createElement('h2');
+        header.innerText = text;
+        header.style.margin = '30px 0 10px 0';
+        header.style.color = '#333';
+        menuOverlay.appendChild(header);
+    }
+
+    // Function to create demo buttons
+    function createDemoButton(text, action) {
+        var button = document.createElement('button');
+        button.innerText = text;
+        button.style.display = 'inline-block';
+        button.style.width = '22%'; // Adjusted width
+        button.style.marginRight = '2%'; // Adjusted margin
+        button.style.padding = '18px';
+        button.style.marginTop = '12px';
+        button.style.backgroundColor = '#444';
+        button.style.color = 'white';
+        button.style.border = 'none';
+        button.style.cursor = 'pointer';
+        button.style.textAlign = 'center';
+        button.style.fontSize = '12px';
+        button.onmouseover = function() {
+            button.style.backgroundColor = '#555';
+        };
+        button.onmouseout = function() {
+            button.style.backgroundColor = '#444';
+        };
+        button.onclick = action;
+        menuOverlay.appendChild(button);
+    }
+
+    // Create the headers and buttons
+    createHeader('Hack Menu UI Buttons');
+    
+    // Button 1: Epics
+    createDemoButton('Epics', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Mythical%20Epics%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+    
+    // Button 2: Change Name
+    createDemoButton('Change Name', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Name%20And%20Nickname%20Changer%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    // Button 3: Pet Selector
+    createDemoButton('Pet Selector', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Pet%20Selector%20475%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    // Button 4: Item Management
+    createDemoButton('Item Management', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Item%20Management%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    // Button 5: Basic Player Teleporter
+    createDemoButton('Basic Player Teleporter', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/BASIC%20Player%20Teleporter%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    // Button 6: Mount Selector UI
+    createDemoButton('Mount Selector', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Mount%20Selector%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    createHeader('Miscellaneous Buttons');
+    createDemoButton('Button 6', function() { alert('Button 6 executed'); });
+    createDemoButton('Button 7', function() { alert('Button 7 executed'); });
+    createDemoButton('Button 8', function() { alert('Button 8 executed'); });
+
+    createHeader('Advanced Features');
+    createDemoButton('Button 9', function() { alert('Button 9 executed'); });
+    createDemoButton('Button 10', function() { alert('Button 10 executed'); });
+    
+    createHeader('Additional Tools');
+    createDemoButton('Button 11', function() { alert('Button 11 executed'); });
+    createDemoButton('Button 12', function() { alert('Button 12 executed'); });
+
+    // Create the footer section
+    var footerSection = document.createElement('div');
+    footerSection.style.textAlign = 'center';
+    footerSection.style.marginTop = '30px';
+    menuOverlay.appendChild(footerSection);
+
+    // Create footer links
+    function createFooterLink(text, url) {
+        var link = document.createElement('a');
+        link.href = url;
+        link.innerText = text;
+        link.style.color = '#333';
+        link.style.margin = '0 10px';
+        link.style.textDecoration = 'none';
+        link.style.fontSize = '14px';
+        link.onmouseover = function() {
+            link.style.textDecoration = 'underline';
+        };
+        link.onmouseout = function() {
+            link.style.textDecoration = 'none';
+        };
+        footerSection.appendChild(link);
+    }
+
+    // Add footer links
+    createFooterLink('Discord', 'https://discord.gg/KXDrcZQV6R');
+    createFooterLink('YouTube', 'https://www.youtube.com/@CrackinPMG');
+
+    // Toggle menu visibility on dropdown button click
+    dropdownButton.addEventListener('click', function() {
+        menuOverlay.style.display = 'block';
+        dropdownButton.style.display = 'none';
+        backButton.style.display = 'block';
+    });
+})();
