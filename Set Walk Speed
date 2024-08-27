@@ -24,6 +24,7 @@ submit.onclick = function() {
     function setWalkSpeed(speed) {
         var player = Boot.prototype.game._state._current.user.source;
         player.walkSpeed = speed;
+        Boot.prototype.game._state.user.walkSpeed = speed;
 
         // Update player data
         player.appearance.updated = true;
