@@ -8,7 +8,7 @@ ui.appendChild(title);
 var input = document.createElement('input');
 input.type = 'number';
 input.min = '1';
-input.max = '6'; // Limit grade to between 1 and 6
+input.max = '8'; // Limit grade to between 1 and 8
 input.style.cssText = 'width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-bottom:10px;';
 ui.appendChild(input);
 
@@ -17,8 +17,8 @@ submit.textContent = 'Set Grade';
 submit.style.cssText = 'padding:10px 15px;background:green;color:white;border:none;border-radius:4px;cursor:pointer;';
 submit.onclick = function() {
     var gradeNumber = parseInt(input.value);
-    if (isNaN(gradeNumber) || gradeNumber < 1 || gradeNumber > 6) {
-        alert("Enter a valid grade (1 to 6).");
+    if (isNaN(gradeNumber) || gradeNumber < 1 || gradeNumber > 8) {
+        alert("Enter a valid grade (1 to 8).");
         return;
     }
 
