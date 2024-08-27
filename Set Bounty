@@ -1,0 +1,45 @@
+var ui = document.createElement('div');
+  ui.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:20px;background:#fff;border:1px solid #ccc;border-radius:5px;box-shadow:0 4px 8px rgba(0,0,0,0.2);z-index:1001;';
+  var title = document.createElement('h3');
+  title.textContent = 'Set Bounty Score';
+  ui.appendChild(title);
+  var input = document.createElement('input');
+  input.type = 'number';
+  input.min = '0';
+  input.max = '1e+307'; // Set maximum limit for the bounty score
+  input.style.cssText = 'width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-bottom:10px;';
+  ui.appendChild(input);
+  var submit = document.createElement('button');
+  submit.textContent = 'Set Bounty';
+  submit.style.cssText = 'padding:10px 15px;background:green;color:white;border:none;border-radius:4px;cursor:pointer;';
+  submit.onclick = function() {
+      var bountyScore = parseFloat(input.value);
+      if (isNaN(bountyScore) || bountyScore < 0 || bountyScore > 1e+308) {
+          alert("Enter a valid number (0 to 1e+308).");
+          return;
+      }
+
+      // Function to set the bounty score
+      function setBounty(score) {
+          var player = Boot.prototype.game._state._current.user.source;
+          player.getBountyScore = () => score;
+
+          player.saveEnabled = true;
+          player.forceSaveCharacter();
+          player.appearanceChanged = true;
+          player.updated = true;
+      }
+
+      // Apply bounty score changes
+      setBounty(bountyScore);
+      document.body.removeChild(ui);
+  };
+  ui.appendChild(submit);
+  var cancel = document.createElement('button');
+  cancel.textContent = 'Cancel';
+  cancel.style.cssText = 'padding:10px 15px;background:red;color:white;border:none;border-radius:4px;cursor:pointer;margin-left:10px;';
+  cancel.onclick = function() {
+      document.body.removeChild(ui);
+  };
+  ui.appendChild(cancel);
+  document.body.appendChild(ui);
