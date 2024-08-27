@@ -1,0 +1,53 @@
+var ui = document.createElement('div');
+  ui.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:20px;background:#fff;border:1px solid #ccc;border-radius:5px;box-shadow:0 4px 8px rgba(0,0,0,0.2);z-index:1001;';
+  
+  var title = document.createElement('h3');
+  title.textContent = 'Set Grade';
+  ui.appendChild(title);
+  
+  var input = document.createElement('input');
+  input.type = 'number';
+  input.min = '1';
+  input.max = '6'; // Limit grade to between 1 and 6
+  input.style.cssText = 'width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-bottom:10px;';
+  ui.appendChild(input);
+  
+  var submit = document.createElement('button');
+  submit.textContent = 'Set Grade';
+  submit.style.cssText = 'padding:10px 15px;background:green;color:white;border:none;border-radius:4px;cursor:pointer;';
+  submit.onclick = function() {
+      var gradeNumber = parseInt(input.value);
+      if (isNaN(gradeNumber) || gradeNumber < 1 || gradeNumber > 6) {
+          alert("Enter a valid grade (1 to 6).");
+          return;
+      }
+
+      // Function to set the grade
+      function setGrade(grade) {
+          var player = Boot.prototype.game._state._current.user.source;
+          player.grade = grade;
+
+          // Update player data
+          player.appearance.updated = true;
+          player.updated = true;
+          player.saveEnabled = true;
+          player.forceSaveCharacter();
+          player.appearanceChanged = true;
+      }
+
+      // Apply grade changes
+      setGrade(gradeNumber);
+      document.body.removeChild(ui);
+  };
+  
+  ui.appendChild(submit);
+  
+  var cancel = document.createElement('button');
+  cancel.textContent = 'Cancel';
+  cancel.style.cssText = 'padding:10px 15px;background:red;color:white;border:none;border-radius:4px;cursor:pointer;margin-left:10px;';
+  cancel.onclick = function() {
+      document.body.removeChild(ui);
+  };
+  
+  ui.appendChild(cancel);
+  document.body.appendChild(ui);
