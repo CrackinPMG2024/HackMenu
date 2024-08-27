@@ -26,6 +26,8 @@ submit.onclick = function() {
     function setGrade(grade) {
         var player = Boot.prototype.game._state._current.user.source;
         player.grade = grade;
+        player._educationData.chosenGrade = grade;
+        player._educationData.grade = grade;
 
         // Update player data
         player.appearance.updated = true;
