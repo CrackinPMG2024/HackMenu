@@ -1,0 +1,2 @@
+Boot.prototype.game._state._current.user.source.canSpin=()=>{return true;}
+Boot.prototype.game._state._current.user.source.updated = true;
