@@ -1,0 +1,1 @@
+Boot.prototype.game._state._current.exitBattle();
