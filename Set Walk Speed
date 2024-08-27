@@ -22,16 +22,16 @@ submit.onclick = function() {
 
     // Function to set walk speed
     function setWalkSpeed(speed) {
-        var player = Boot.prototype.game._state._current.user.source;
+        var player = Boot.prototype.game._state._current.user;
         player.walkSpeed = speed;
-        Boot.prototype.game._state.user.walkSpeed = speed;
+        Boot.prototype.game._state._current.user.walkSpeed = speed;
 
         // Update player data
-        player.appearance.updated = true;
-        player.updated = true;
-        player.saveEnabled = true;
-        player.forceSaveCharacter();
-        player.appearanceChanged = true;
+        player.source.appearance.updated = true;
+        player.source.updated = true;
+        player.source.saveEnabled = true;
+        player.source.forceSaveCharacter();
+        player.source.appearanceChanged = true;
     }
 
     // Apply walk speed changes
