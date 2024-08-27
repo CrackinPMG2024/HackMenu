@@ -1,0 +1,61 @@
+// Create UI container
+var ui = document.createElement('div');
+ui.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:20px;background:#fff;border:1px solid #ccc;border-radius:5px;box-shadow:0 4px 8px rgba(0,0,0,0.2);z-index:1001;';
+
+// Title
+var title = document.createElement('h3');
+title.textContent = 'Game Controls';
+ui.appendChild(title);
+
+// Button 1: Set Dyno Dig Walk Speed
+var dynoSpeedButton = document.createElement('button');
+dynoSpeedButton.textContent = 'Set Dyno Dig Walk Speed';
+dynoSpeedButton.style.cssText = 'padding:10px 15px;background:blue;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+dynoSpeedButton.onclick = function() {
+    var dynoDigWalkspeed = parseFloat(prompt("Enter Dyno Dig Walk Speed:", "1"));
+    if (!isNaN(dynoDigWalkspeed)) {
+        Boot.prototype.game._state._current.walkSpeed = dynoDigWalkspeed;
+    } else {
+        alert("Please enter a valid number.");
+    }
+};
+ui.appendChild(dynoSpeedButton);
+
+// Button 2: Extend Time
+var extendTimeButton = document.createElement('button');
+extendTimeButton.textContent = 'Extend Time';
+extendTimeButton.style.cssText = 'padding:10px 15px;background:green;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+extendTimeButton.onclick = function() {
+    Boot.prototype.game._state._current.extendTime();
+};
+ui.appendChild(extendTimeButton);
+
+// Button 3: End Game
+var endGameButton = document.createElement('button');
+endGameButton.textContent = 'End Game';
+endGameButton.style.cssText = 'padding:10px 15px;background:red;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+endGameButton.onclick = function() {
+    Boot.prototype.game._state._current.endGame();
+};
+ui.appendChild(endGameButton);
+
+// Button 4: Add Infinite Time
+var infiniteTimeButton = document.createElement('button');
+infiniteTimeButton.textContent = 'Add Infinite Time';
+infiniteTimeButton.style.cssText = 'padding:10px 15px;background:purple;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+infiniteTimeButton.onclick = function() {
+    Boot.prototype.game._state._current.timer.addTime(Infinity);
+};
+ui.appendChild(infiniteTimeButton);
+
+// Cancel button to close the UI
+var cancelButton = document.createElement('button');
+cancelButton.textContent = 'Cancel';
+cancelButton.style.cssText = 'padding:10px 15px;background:gray;color:white;border:none;border-radius:4px;cursor:pointer;margin-left:10px;';
+cancelButton.onclick = function() {
+    document.body.removeChild(ui);
+};
+ui.appendChild(cancelButton);
+
+// Append UI to the body
+document.body.appendChild(ui);
