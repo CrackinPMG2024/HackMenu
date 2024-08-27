@@ -1,0 +1,62 @@
+// Create UI container
+var ui = document.createElement('div');
+ui.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:20px;background:#fff;border:1px solid #ccc;border-radius:5px;box-shadow:0 4px 8px rgba(0,0,0,0.2);z-index:1001;';
+
+// Title
+var title = document.createElement('h3');
+title.textContent = 'TEK-Y4 Controls';
+ui.appendChild(title);
+
+// Button 1: Set Gear Bonus
+var setGearButton = document.createElement('button');
+setGearButton.textContent = 'Set Gear Bonus';
+setGearButton.style.cssText = 'padding:10px 15px;background:blue;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+setGearButton.onclick = function() {
+    var howManyGearsDoYouWant = parseFloat(prompt("Enter the number of gears you want:", "1"));
+    if (!isNaN(howManyGearsDoYouWant)) {
+        Boot.prototype.game._state._current.gearBonus = howManyGearsDoYouWant;
+    } else {
+        alert("Please enter a valid number.");
+    }
+};
+ui.appendChild(setGearButton);
+
+// Button 2: End Game
+var endGameButton = document.createElement('button');
+endGameButton.textContent = 'End Game';
+endGameButton.style.cssText = 'padding:10px 15px;background:red;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+endGameButton.onclick = function() {
+    Boot.prototype.game._state._current.endGame();
+};
+ui.appendChild(endGameButton);
+
+// Button 3: Pause Timer
+var pauseTimerButton = document.createElement('button');
+pauseTimerButton.textContent = 'Pause Timer';
+pauseTimerButton.style.cssText = 'padding:10px 15px;background:orange;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+pauseTimerButton.onclick = function() {
+    Boot.prototype.game._state._current.timer.beginTimer();
+    Boot.prototype.game._state._current.timer.targetTime = NaN;
+};
+ui.appendChild(pauseTimerButton);
+
+// Button 4: Resume Timer
+var resumeTimerButton = document.createElement('button');
+resumeTimerButton.textContent = 'Resume Timer';
+resumeTimerButton.style.cssText = 'padding:10px 15px;background:green;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:10px;';
+resumeTimerButton.onclick = function() {
+    Boot.prototype.game._state._current.timer.targetTime = true;
+};
+ui.appendChild(resumeTimerButton);
+
+// Cancel button to close the UI
+var cancelButton = document.createElement('button');
+cancelButton.textContent = 'Cancel';
+cancelButton.style.cssText = 'padding:10px 15px;background:gray;color:white;border:none;border-radius:4px;cursor:pointer;margin-left:10px;';
+cancelButton.onclick = function() {
+    document.body.removeChild(ui);
+};
+ui.appendChild(cancelButton);
+
+// Append UI to the body
+document.body.appendChild(ui);
