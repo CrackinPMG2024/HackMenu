@@ -177,9 +177,19 @@
             .catch(error => console.error("Failed to load the script:", error));
     });
 
+    createDemoButton('Change Appearance', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Player%20Appearance%20UI";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
     createHeader('Player Hacks');
 
-    // Button 6: Set Gold
+    // Button 6.5: Set Gold
     createDemoButton('Set Gold', function() {
         const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Set%20Gold%20Script";
         fetch(scriptUrl)
