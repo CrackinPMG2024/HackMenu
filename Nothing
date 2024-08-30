@@ -322,6 +322,15 @@
             .catch(error => console.error("Failed to load the script:", error));
     });
     
+    createDemoButton('Get All Gems', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Get%20All%20Gems";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
     
     createHeader('Battle Hacks');
     createDemoButton('Exit Battle', function() {
