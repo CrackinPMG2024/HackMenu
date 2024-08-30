@@ -301,6 +301,16 @@
             })
             .catch(error => console.error("Failed to load the script:", error));
     });
+
+    createDemoButton('Remove Players From Screen', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Remove%20Current%20Players%20From%20Screen";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
     
     
     createHeader('Battle Hacks');
