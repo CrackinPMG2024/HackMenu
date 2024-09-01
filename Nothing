@@ -352,9 +352,27 @@
             })
             .catch(error => console.error("Failed to load the script:", error));
     });
-    createDemoButton('Button 10', function() { alert('Button 10 executed'); });
+    createDemoButton('Log Message', function() { 
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Battle%20Message%20Log";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
 
-    createHeader('Additional Tools');
+    createDemoButton('Zoom Level', function() { 
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Battle%20Zoom";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    createHeader('Minigames');
     createDemoButton('Dyno Dig Oasis', function() {
         const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Dyno%20Dig%20Oasis%20Script";
         fetch(scriptUrl)
@@ -367,6 +385,17 @@
     
     createDemoButton('TEK-Y4', function() {
         const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/TEK-Y4%20Script";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
+    createHeader('Other Tools and Features');
+    createDemoButton('Remove In-game UI', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Remove%20in-game%20UI";
         fetch(scriptUrl)
             .then(response => response.text())
             .then(code => {
