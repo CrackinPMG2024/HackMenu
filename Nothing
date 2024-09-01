@@ -187,6 +187,16 @@
             .catch(error => console.error("Failed to load the script:", error));
     });
 
+    createDemoButton('Item Selector', function() {
+        const scriptUrl = "https://raw.githubusercontent.com/CrackinPMG2024/HackMenu/main/Advanced%20Item%20Selector";
+        fetch(scriptUrl)
+            .then(response => response.text())
+            .then(code => {
+                eval(code);
+            })
+            .catch(error => console.error("Failed to load the script:", error));
+    });
+
     createHeader('Player Hacks');
 
     // Button 6.5: Set Gold
